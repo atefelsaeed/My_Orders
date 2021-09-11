@@ -28,7 +28,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        secondaryHeaderColor: defaultColor,
         primaryColor: defaultColor,
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black)
+        )
       ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

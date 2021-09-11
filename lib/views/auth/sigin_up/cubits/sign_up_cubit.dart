@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_order_app_v1/views/sigin_up/states/sign_up_states.dart';
+import 'package:my_order_app_v1/views/auth/sigin_up/states/sign_up_states.dart';
 
 class SignUpCubit extends Cubit<SignUpStates> {
   SignUpCubit() : super(SignUpInitialState());
@@ -9,6 +9,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
 
   IconData suffix = Icons.visibility_outlined;
   bool isPassword = true;
+  bool isChecked = false;
 
   void changePasswordVisibility() {
     isPassword = !isPassword;
@@ -16,5 +17,9 @@ class SignUpCubit extends Cubit<SignUpStates> {
     isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
 
     emit(SignUpChangePasswordVisibilityState());
+  }
+  void changeCheckbox(bool value){
+    isChecked=value;
+    emit(SignUpChangeCheckboxPasswordVisibilityState());
   }
 }

@@ -30,6 +30,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc:
   easy_localization: ^3.0.0
+  pin_code_fields: ^7.3.0
+  location:
+  geolocator:
+  google_maps_flutter:
+  bloc:
 
 dev_dependencies:
   flutter_test:

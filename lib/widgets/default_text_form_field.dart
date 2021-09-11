@@ -33,6 +33,7 @@ Widget defaultFormField({
           validate(s);
         },
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
           labelText: label,
           prefixIcon: Icon(prefix),
           suffixIcon: suffix != null

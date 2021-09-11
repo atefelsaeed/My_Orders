@@ -4,8 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
+import 'package:my_order_app_v1/views/auth/login/cubits/login_cubit.dart';
+import 'package:my_order_app_v1/views/auth/login/states/login_states.dart';
+import 'package:my_order_app_v1/views/auth/reset_password/reset_password.dart';
+import 'package:my_order_app_v1/views/auth/sigin_up/sign_up_view.dart';
 import 'package:my_order_app_v1/views/home/home_view.dart';
-import 'package:my_order_app_v1/views/login/cubits/login_cubit.dart';
+
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/default_text_form_field.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
@@ -18,8 +22,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-      builder:(context,state)=> Form(
+    return BlocBuilder<LoginCubit, LoginStates>(
+      builder: (context, state) => Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +66,13 @@ class LoginForm extends StatelessWidget {
               Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateTo(
+                          context,
+                          BlocProvider.value(
+                              value: LoginCubit.get(context),
+                              child: ResetPassword()));
+                    },
                     child: Text(
                       LocaleKeys.forgot_password.tr(),
                       style: TextStyle(
@@ -73,7 +83,9 @@ class LoginForm extends StatelessWidget {
                   ),
                   Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateTo(context, SignUpView());
+                    },
                     child: Text(
                       LocaleKeys.create_an_account.tr(),
                       style: TextStyle(
