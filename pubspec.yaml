@@ -35,6 +35,8 @@ dependencies:
   geolocator:
   google_maps_flutter:
   bloc:
+  flutter_carousel_slider: ^1.0.8
+
 
 dev_dependencies:
   flutter_test:

@@ -51,7 +51,8 @@ class CodegenLoader extends AssetLoader{
   "payment": "الدفع",
   "get_help": " المساعدة",
   "about_us": "معلومات عننا",
-  "contact_us": "تواصل معنا"
+  "contact_us": "تواصل معنا",
+  "voucher": "الخصومات"
 };
 static const Map<String,dynamic> en = {
   "login": "Login",
@@ -90,7 +91,8 @@ static const Map<String,dynamic> en = {
   "payment": "Payment",
   "get_help": "Get help",
   "about_us": "About us",
-  "contact_us": "Contact us"
+  "contact_us": "Contact us",
+  "voucher": "Vouchers"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

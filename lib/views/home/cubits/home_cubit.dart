@@ -29,6 +29,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
   void chooseLanguage(String val) {
     dropdownValue = val;
+
     emit(HomeChooseLanguageState());
   }
 
