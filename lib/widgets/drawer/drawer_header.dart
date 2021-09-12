@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:my_order_app_v1/views/auth/login/login_view.dart';
 import 'package:my_order_app_v1/views/home/cubits/home_cubit.dart';
 import 'package:my_order_app_v1/views/home/states/home_states.dart';
 import 'package:my_order_app_v1/views/settings/settings_view.dart';
@@ -43,7 +44,9 @@ Widget drawerHeader() {
               ),
               //=================login==================
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateTo(context, LoginView());
+                  },
                   child: Text(
                     'Login',
                     style: TextStyle(

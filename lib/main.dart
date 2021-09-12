@@ -30,9 +30,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         secondaryHeaderColor: defaultColor,
         primaryColor: defaultColor,
-        appBarTheme: AppBarTheme(
-          iconTheme: IconThemeData(color: Colors.black)
-        )
       ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

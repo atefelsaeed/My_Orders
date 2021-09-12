@@ -38,5 +38,6 @@ abstract class  LocaleKeys {
   static const get_help = 'get_help';
   static const about_us = 'about_us';
   static const contact_us = 'contact_us';
+  static const voucher = 'voucher';
 
 }

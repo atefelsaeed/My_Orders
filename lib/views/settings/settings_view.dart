@@ -53,7 +53,6 @@ class SettingsView extends StatelessWidget {
                       }).toList(),
                       onChanged: (String? newValue) {
                         cubit.chooseLanguage(newValue!);
-
                         print('${cubit.dropdownValue}');
                         cubit.dropdownValue == 'English'
                             ? context.setLocale(Locale('en'))
