@@ -106,7 +106,7 @@ Widget popularFoodCard(int index) {
                   )
                 ],
               ),
-              Spacer(),
+              Spacer(),//xx
               Icon(
                 Icons.watch_later_outlined,
                 color: Colors.black54,
