@@ -14,8 +14,6 @@ import 'components/popular_food.dart';
 import 'cubits/home_cubit.dart';
 
 class HomeView extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,27 +26,39 @@ class HomeView extends StatelessWidget {
             iconTheme: IconThemeData(color: defaultColor),
             backgroundColor: Colors.white,
             elevation: 0,
-            title: Center(
-              child: Text(
-                LocaleKeys.home.tr(),
+            actions: [
+              // Container(
+              //   height: 30,
+              //   decoration: BoxDecoration(
+              //     color: defaultColor,
+              //       // borderRadius: BorderRadius.circular(20),
+              //       // border:Border.all(color: defaultColor)
+              //       ),
+              // ),
+              IconButton(onPressed: () {}, icon: Icon(Icons.whatshot)),
+              Center(
+                  child: Text(
+                'EL-GALLA Street',
                 style: TextStyle(color: Colors.black),
+              )),
+              Icon(
+                Icons.location_pin,
+                color: defaultColor,
               ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                carouselSlider(),
+                heightSizedBox(10),
+                popularFood(),
+                heightSizedBox(10),
+              ],
             ),
           ),
-          body:SingleChildScrollView(
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    carouselSlider(),
-                    heightSizedBox(10),
-                    popularFood(),
-                  ],
-                ),
-              ),
-            ),
-          ) ,
         ),
       ),
     );

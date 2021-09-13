@@ -36,7 +36,7 @@ dependencies:
   google_maps_flutter:
   bloc:
   flutter_carousel_slider: ^1.0.8
-
+  flutter_rating_bar: ^4.0.0
 
 dev_dependencies:
   flutter_test:
