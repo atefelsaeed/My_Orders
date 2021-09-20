@@ -6,6 +6,8 @@ class HomeSuccessState extends HomeStates{}
 
 class HomeErrorState extends HomeStates{}
 
+class HomeCategorySelectedItemState extends HomeStates{}
+
 class HomeDrawerSelectedItemState extends HomeStates{}
 
 class HomeOnSwitchNotificationButtonState extends HomeStates{}

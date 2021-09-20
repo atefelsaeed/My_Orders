@@ -10,7 +10,7 @@ Widget defaultFormField({
   bool isPassword = false,
   required Function validate,
   required String label,
-  required IconData prefix,
+   IconData? prefix,
   IconData? suffix,
   Function? suffixPressed,
   bool isClickable = true,
@@ -23,12 +23,6 @@ Widget defaultFormField({
         onFieldSubmitted: (s) {
           onSubmit!(s);
         },
-        // onChanged: (s) {
-        //   onChange!(s);
-        // },
-        // onTap: () {
-        //   onTap!();
-        // },
         validator: (s) {
           validate(s);
         },

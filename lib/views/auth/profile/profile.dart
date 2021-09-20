@@ -5,6 +5,7 @@ import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/default_text_form_field.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
 
 class Profile extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
@@ -16,6 +17,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: HomeDrawer(),
       appBar: defaultAppBar(
         LocaleKeys.profile.tr(),
       ),

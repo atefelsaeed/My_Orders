@@ -5,12 +5,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/views/auth/profile/profile.dart';
+import 'package:my_order_app_v1/views/auth/profile/user_details_screen.dart';
 import 'package:my_order_app_v1/views/get_help/get_help_view.dart';
 import 'package:my_order_app_v1/views/home/cubits/home_cubit.dart';
 import 'package:my_order_app_v1/views/map_screen/map_screen.dart';
 import 'package:my_order_app_v1/views/notifications/notifications_view.dart';
+import 'package:my_order_app_v1/views/offers/offers_screen.dart';
 import 'package:my_order_app_v1/views/offers/offers_view.dart';
 import 'package:my_order_app_v1/views/vouchers/vouchers_view.dart';
+import 'package:my_order_app_v1/views/your_orders/orders.dart';
 import 'package:my_order_app_v1/views/your_orders/your_orders_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
@@ -52,7 +55,7 @@ Widget drawerBody(context) {
               context,
               BlocProvider.value(
                 value: HomeCubit.get(context),
-                child: Profile(),
+                child: UserDetailsScreen(),
               ));
         },
       ),
@@ -84,7 +87,7 @@ Widget drawerBody(context) {
               context,
               BlocProvider.value(
                 value: HomeCubit.get(context),
-                child: YourOrdersView(),
+                child: OrdersScreen(),
               ));
         },
       ),
@@ -100,7 +103,7 @@ Widget drawerBody(context) {
               context,
               BlocProvider.value(
                 value: HomeCubit.get(context),
-                child: OffersView(),
+                child: OffersScreen(),
               ));
         },
       ),
@@ -154,8 +157,7 @@ Widget drawerBody(context) {
         text: LocaleKeys.get_help.tr(),
         onTap: () {
           HomeCubit.get(context).itemSelection(8);
-          navigateTo(
-              context,
+          navigateAndFinish( context,
               BlocProvider.value(
                 value: HomeCubit.get(context),
                 child: GetHelpView(),
@@ -170,17 +172,18 @@ Widget drawerBody(context) {
         text: LocaleKeys.about_us.tr(),
         onTap: () {
           HomeCubit.get(context).itemSelection(9);
-          navigateTo(
-              context,
-              BlocProvider.value(
-                value: HomeCubit.get(context),
-                child: NotificationsView(),
-              ));
+          // navigateTo(
+          //     context,
+          //     BlocProvider.value(
+          //       value: HomeCubit.get(context),
+          //       child: NotificationsView(),
+          //     ));
         },
       ),
-     heightSizedBox(10),
+     heightSizedBox(20),
      //========================drawerFooter=============
       drawerFooter(),
+      heightSizedBox(50),
     ],
   );
 }

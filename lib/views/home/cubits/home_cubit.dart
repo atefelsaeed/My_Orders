@@ -6,14 +6,20 @@ class HomeCubit extends Cubit<HomeStates> {
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
-  int isSelected = 0;
+  int categorySelected = 0;
 
-  int get getCurrentItem => isSelected;
+  void categoryItemSelection(int value) {
+    categorySelected = value;
+    emit(HomeCategorySelectedItemState());
+  }
+
+  int isSelected = 0;
 
   void itemSelection(int value) {
     isSelected = value;
     emit(HomeDrawerSelectedItemState());
   }
+
 
   bool notificationSwitchButton = false;
 

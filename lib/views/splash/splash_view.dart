@@ -16,26 +16,29 @@ class _SplashViewState extends State<SplashView> {
     Timer(
         Duration(seconds: 1),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) =>MapSample())));
+            context, MaterialPageRoute(builder: (context) => MapSample())));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
             defaultColor,
             secondaryColor,
-          ])),
+          ],
+        ),
+      ),
       child: Center(
-          child: Image.asset(
-        'assets/images/logo.png',
-        width: 200,
-        height: 200,
-      )),
+        child: Image.asset(
+          'assets/images/logo.png',
+          width: 200,
+          height: 200,
+        ),
+      ),
     );
   }
 }

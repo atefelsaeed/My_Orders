@@ -18,7 +18,7 @@ Widget drawerItem({
     HomeCubit cubit = HomeCubit.get(context);
     return Container(
       width: 250,
-      height: 40,
+      height: 60,
       decoration: cubit.isSelected == selected
           ? BoxDecoration(
               color: Colors.black,
@@ -41,7 +41,7 @@ Widget drawerItem({
             Icon(
               icon,
               color: Colors.white,
-              size: 20,
+              size: 25,
             ),
             Padding(
               padding: EdgeInsets.only(left: 8.0,right: 8.0),
@@ -49,6 +49,7 @@ Widget drawerItem({
                 text,
                 style: TextStyle(
                   color: Colors.white,
+                  fontSize: 16
                 ),
               ),
             )
