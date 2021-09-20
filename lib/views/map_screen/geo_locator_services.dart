@@ -1,16 +1,4 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
-
-//class GeoLocatorServices{
-//  Future<Position>getCurrentLocation()async{
-//    return await Geolocator.getCurrentPosition(
-//      desiredAccuracy: LocationAccuracy.high,
-//    );
-//  }
-//}
-
-
-
 
 class LocationServices {
   Future<LocationData> getLocation() async {

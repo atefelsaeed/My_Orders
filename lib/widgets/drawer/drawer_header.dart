@@ -7,22 +7,24 @@ import 'package:my_order_app_v1/views/home/cubits/home_cubit.dart';
 import 'package:my_order_app_v1/views/home/states/home_states.dart';
 import 'package:my_order_app_v1/views/settings/settings_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
+import 'package:my_order_app_v1/widgets/sized_box.dart';
 
 Widget drawerHeader() {
   return BlocBuilder<HomeCubit, HomeStates>(builder: (context, state) {
     return Container(
-      height: 120,
+      height: 160,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //=================cartIcon========================
+          widthSizedBox(10),
           IconButton(
               onPressed: () {},
               icon: Icon(
                 Icons.shopping_cart,
                 color: Colors.white,
-                size: 25,
+                size: 30,
               )),
           Spacer(),
           Column(
@@ -44,35 +46,38 @@ Widget drawerHeader() {
               ),
               //=================login==================
               TextButton(
-                  onPressed: () {
-                    navigateTo(context, LoginView());
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ))
+                onPressed: () {
+                  navigateTo(context, LoginView());
+                },
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
             ],
           ),
           Spacer(),
           //==================setting=====================
           IconButton(
-              onPressed: () {
-                navigateTo(
-                  context,
-                  BlocProvider.value(
-                    value: HomeCubit.get(context),
-                    child: SettingsView(),
-                  ),
-                );
-              },
-              icon: Icon(
-                Icons.settings_outlined,
-                color: Colors.white,
-                size: 25,
-              )),
+            onPressed: () {
+              navigateTo(
+                context,
+                BlocProvider.value(
+                  value: HomeCubit.get(context),
+                  child: SettingsView(),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.settings_outlined,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+          widthSizedBox(10),
         ],
       ),
     );

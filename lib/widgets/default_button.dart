@@ -3,6 +3,7 @@ import 'package:my_order_app_v1/const/style.dart';
 
 Widget defaultButton({
   double width = double.infinity,
+  IconData ?icon,
   Color background = defaultColor,
   bool isUpperCase = true,
   double radius = 3.0,
@@ -16,13 +17,19 @@ Widget defaultButton({
         onPressed: (){
           function();
         },
-        child: Text(
-          isUpperCase ? text.toUpperCase() : text,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              isUpperCase ? text.toUpperCase() : text,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            Icon(icon,color: Colors.white,),
+          ],
         ),
       ),
       decoration: BoxDecoration(

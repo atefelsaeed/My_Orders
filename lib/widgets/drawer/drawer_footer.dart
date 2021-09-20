@@ -25,17 +25,18 @@ Widget drawerFooter(){
               child: Image.asset('assets/images/facebook.png'),
               onTap: () {},
             ),
-            widthSizedBox(15),
+            widthSizedBox(25),
             InkWell(
               child: Image.asset('assets/images/instagram.png'),
               onTap: () {},
             ),
-            widthSizedBox(15),
+            widthSizedBox(25),
             InkWell(
               child: Image.asset('assets/images/twitter.png'),
               onTap: () {},
             ),
             Spacer(),
+
           ],
         )
       ],

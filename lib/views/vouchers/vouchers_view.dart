@@ -4,6 +4,7 @@ import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
 
 import 'components/active_tab_body.dart';
 import 'components/expired_tab_body.dart';
@@ -17,6 +18,7 @@ class VouchersView extends StatelessWidget {
       length: 3,
       initialIndex: 1,
       child: Scaffold(
+        drawer: HomeDrawer(),
         appBar: defaultAppBar(
           LocaleKeys.voucher.tr(),
           tapBar: TabBar(

@@ -4,6 +4,7 @@ import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
 
 class GetHelpView extends StatelessWidget {
   List list = [
@@ -31,6 +32,7 @@ class GetHelpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: HomeDrawer(),
       appBar: defaultAppBar(
         LocaleKeys.get_help.tr(),
       ),
