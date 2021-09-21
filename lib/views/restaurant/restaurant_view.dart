@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/views/information/information_view.dart';
+import 'package:my_order_app_v1/views/offers/offers_screen.dart';
+import 'package:my_order_app_v1/views/offers/offers_view.dart';
 import 'package:my_order_app_v1/views/reviews/reviews_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
@@ -45,10 +47,11 @@ class RestaurantView extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'All Restaurants',
+                                'Koshary Gedoo',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
+                              widthSizedBox(5),
                               Text(
                                 'Online',
                                 style: TextStyle(
@@ -135,7 +138,12 @@ class RestaurantView extends StatelessWidget {
                       color: defaultColor,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateTo(
+                          context,
+                          OffersScreen(),
+                        );
+                      },
                       child: Text(
                         'offer of the restaurant',
                         style: TextStyle(
@@ -151,26 +159,55 @@ class RestaurantView extends StatelessWidget {
                   length: 4,
                   child: Column(
                     children: [
-                      TabBar(
-                          unselectedLabelColor: Colors.black54,
-                          labelColor: defaultColor,
-                          // isScrollable: true,
-                          indicatorColor: Colors.white,
-                          indicator: BoxDecoration(),
-                          tabs: [
-                            Tab(
-                              child: Text('koshary'),
-                            ),
-                            Tab(
-                              text: 'Sandwitch',
-                            ),
-                            Tab(
-                              text: 'Chicken',
-                            ),
-                            Tab(
-                              text: 'All',
-                            ),
-                          ]),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 2.0,
+                              // has the effect of softening the shadow
+                              // spreadRadius: 1.0, // has the effect of extending the shadow
+                              offset: Offset(
+                                -2.0, // horizontal, move right 10
+                                4.0, // vertical, move down 10
+                              ),
+                            )
+                          ],
+                        ),
+                        child: TabBar(
+                            unselectedLabelColor: Colors.black54,
+                            labelColor: defaultColor,
+                            // isScrollable: true,
+                            indicatorColor: Colors.white,
+                            indicator: BoxDecoration(),
+                            tabs: [
+                              Tab(
+                                child: Text(
+                                  'koshary',
+                                  maxLines: 1,
+                                ),
+                              ),
+                              Tab(
+                                child: Text(
+                                  'Sandwitch',
+                                  maxLines: 1,
+                                ),
+                              ),
+                              Tab(
+                                child: Text(
+                                  'Chicken',
+                                  maxLines: 1,
+                                ),
+                              ),
+                              Tab(
+                                child: Text(
+                                  'All',
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ]),
+                      ),
                       Container(
                         height: 300,
                         // color: Colors.orangeAccent,

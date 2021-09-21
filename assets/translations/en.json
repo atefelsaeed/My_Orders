@@ -36,5 +36,20 @@
   "get_help": "Get help",
   "about_us": "About us",
   "contact_us": "Contact us",
-  "voucher": "Vouchers"
+  "voucher": "Vouchers",
+  "search_text": "What are you looking for?",
+  "all": "All",
+  "food": "Food",
+  "groceries": "Groceries",
+  "sweet": "Sweet",
+  "drinks": "Drinks",
+  "popular_food": "Popular food",
+  "view_more": "View more",
+  "popular_brands": "Popular brands neer you ",
+  "special_offers": "Special offers",
+  "fast_delivery ": "Fast Delivery ",
+  "all_restaurants": "All Restaurants",
+  "view_all_restaurants": "View all Restaurants",
+  "info": "Info",
+  "reviews": "Reviews"
 }

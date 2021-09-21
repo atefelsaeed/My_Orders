@@ -44,10 +44,7 @@ Widget restaurantFilterCard(context, {int? index, String? mealName}) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
-              ),
+              borderRadius: BorderRadius.circular(15),
               child: Image.asset(
                 restaurantFilterList[index!],
                 width: 120,

@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_order_app_v1/views/home/home_view.dart';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
+
+import 'package:my_order_app_v1/views/home/view.dart';
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
 
-Widget mapFooter(context){
-  return  Container(
+String yourLocation = 'Mansoura city';
+
+Widget mapFooter(context) {
+  return Container(
     width: double.infinity,
     color: Colors.white,
     child: Padding(
@@ -16,9 +22,8 @@ Widget mapFooter(context){
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Choose location',
-            style:
-            TextStyle(color: Colors.grey, fontSize: 18),
+            LocaleKeys.choose_location.tr(),
+            style: TextStyle(color: Colors.grey, fontSize: 18),
           ),
           heightSizedBox(12),
           Row(
@@ -31,7 +36,7 @@ Widget mapFooter(context){
                 width: 10,
               ),
               Text(
-                'Mansoura city',
+                yourLocation,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -45,9 +50,8 @@ Widget mapFooter(context){
             radius: 10,
             function: () {
               navigateAndFinish(context, HomeView());
-              // print(_initialLocation.toString());
             },
-            text: 'Choose location',
+            text: LocaleKeys.choose_location.tr(),
           ),
         ],
       ),

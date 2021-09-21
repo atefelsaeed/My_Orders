@@ -52,7 +52,20 @@ class CodegenLoader extends AssetLoader{
   "get_help": " المساعدة",
   "about_us": "معلومات عننا",
   "contact_us": "تواصل معنا",
-  "voucher": "الخصومات"
+  "voucher": "الخصومات",
+  "search_text": "ما الذي تبحث عنه؟",
+  "all": "الكل",
+  "food": "مأكولات أساسية",
+  "groceries": "الخضراوات",
+  "sweet": "الحلويات",
+  "drinks": "المشروبات",
+  "popular_food": "المأكولات الشائعة",
+  "view_more": "عرض المزيد",
+  "popular_brands": "العلامات التجارية الشهيرة بالقرب منك",
+  "special_offers": "عروض خاصة",
+  "fast_delivery ": "توصيل سريع",
+  "all_restaurants": "كل المطاعم",
+  "view_all_restaurants": "عرض كل المطاعم"
 };
 static const Map<String,dynamic> en = {
   "login": "Login",
@@ -92,7 +105,20 @@ static const Map<String,dynamic> en = {
   "get_help": "Get help",
   "about_us": "About us",
   "contact_us": "Contact us",
-  "voucher": "Vouchers"
+  "voucher": "Vouchers",
+  "search_text": "What are you looking for?",
+  "all": "All",
+  "food": "Food",
+  "groceries": "Groceries",
+  "sweet": "Sweet",
+  "drinks": "Drinks",
+  "popular_food": "Popular food",
+  "view_more": "View more",
+  "popular_brands": "Popular brands neer you ",
+  "special_offers": "Special offers",
+  "fast_delivery ": "Fast Delivery ",
+  "all_restaurants": "All Restaurants",
+  "view_all_restaurants": "View all Restaurants"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

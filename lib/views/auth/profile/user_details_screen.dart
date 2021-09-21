@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_order_app_v1/widgets/default_app_bar.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
 
 class UserDetailsScreen extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
@@ -75,16 +77,8 @@ class UserDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'User Details',
-          style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-      ),
+      drawer: HomeDrawer(),
+      appBar:defaultAppBar('User Details'),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(

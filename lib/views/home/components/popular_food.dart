@@ -1,60 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/views/restaurant/restaurant_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
 
-List<String> list = [
-  'assets/images/popular.png',
-  'assets/images/popular.png',
-  'assets/images/popular.png',
-];
+// List<String> list = [
+//   'assets/images/popular.png',
+//   'assets/images/popular.png',
+//   'assets/images/popular.png',
+// ];
 
-Widget popularFood() {
-  return Column(
-    children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-        child: Row(
-          children: [
-            Text(
-              'Popular food',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            Spacer(),
-            FlatButton(
-              height: 40,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  side: BorderSide(
-                    color: defaultColor,
-                  )),
-              child: Text(
-                'View more',
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
-      ),
-      heightSizedBox(10),
-      Container(
-        height: 200,
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => popularFoodCard(index,context),
-          itemCount: list.length,
-        ),
-      ),
-    ],
-  );
-}
 
-Widget popularFoodCard(int index,context) {
+Widget popularFoodCard(String img,context) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 5.0),
     child: InkWell(
@@ -62,18 +25,18 @@ Widget popularFoodCard(int index,context) {
         navigateTo(context, RestaurantView());
       },
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-            child: Image.asset(
-              list[index],
-              width: 200,
-              height: 130,
-              fit: BoxFit.fill,
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              child: Image.asset(
+                'assets/images/$img',
+                width: MediaQuery.of(context).size.width/1.8,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
-          heightSizedBox(5),
           Text(
             'Ranch Effect Sandwich',
             style: TextStyle(

@@ -39,5 +39,18 @@ abstract class  LocaleKeys {
   static const about_us = 'about_us';
   static const contact_us = 'contact_us';
   static const voucher = 'voucher';
+  static const search_text = 'search_text';
+  static const all = 'all';
+  static const food = 'food';
+  static const groceries = 'groceries';
+  static const sweet = 'sweet';
+  static const drinks = 'drinks';
+  static const popular_food = 'popular_food';
+  static const view_more = 'view_more';
+  static const popular_brands = 'popular_brands';
+  static const special_offers = 'special_offers';
+  static const fast_delivery  = 'fast_delivery ';
+  static const all_restaurants = 'all_restaurants';
+  static const view_all_restaurants = 'view_all_restaurants';
 
 }

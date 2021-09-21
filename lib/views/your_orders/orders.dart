@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
 
 import 'old_orders_screen.dart';
 import 'recents_orders_screen.dart';
@@ -17,6 +18,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: HomeDrawer(),
       appBar: defaultAppBar('Orders'),
       body: Container(
         child: Column(

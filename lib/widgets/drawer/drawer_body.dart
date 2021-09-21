@@ -8,6 +8,7 @@ import 'package:my_order_app_v1/views/auth/profile/profile.dart';
 import 'package:my_order_app_v1/views/auth/profile/user_details_screen.dart';
 import 'package:my_order_app_v1/views/get_help/get_help_view.dart';
 import 'package:my_order_app_v1/views/home/cubits/home_cubit.dart';
+import 'package:my_order_app_v1/views/home/view.dart';
 import 'package:my_order_app_v1/views/map_screen/map_screen.dart';
 import 'package:my_order_app_v1/views/notifications/notifications_view.dart';
 import 'package:my_order_app_v1/views/offers/offers_screen.dart';
@@ -18,7 +19,6 @@ import 'package:my_order_app_v1/views/your_orders/your_orders_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
 
-import '../../views/home/home_view.dart';
 import 'drawer_footer.dart';
 import 'drawer_item.dart';
 
