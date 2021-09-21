@@ -8,7 +8,7 @@ import 'package:my_order_app_v1/views/auth/login/cubits/login_cubit.dart';
 import 'package:my_order_app_v1/views/auth/login/states/login_states.dart';
 import 'package:my_order_app_v1/views/auth/reset_password/reset_password.dart';
 import 'package:my_order_app_v1/views/auth/sigin_up/sign_up_view.dart';
-import 'package:my_order_app_v1/views/home/home_view.dart';
+import 'package:my_order_app_v1/views/home/view.dart';
 
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/default_text_form_field.dart';
@@ -33,7 +33,11 @@ class LoginForm extends StatelessWidget {
               defaultFormField(
                 controller: emailController,
                 type: TextInputType.emailAddress,
-                validate: (value) {},
+                validate: (value) {
+                  if (value.isEmpty) {
+                    return 'password is too short';
+                  }
+                },
                 label: LocaleKeys.email.tr(),
                 prefix: Icons.email,
               ),

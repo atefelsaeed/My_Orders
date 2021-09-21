@@ -14,7 +14,8 @@ import 'package:my_order_app_v1/widgets/sized_box.dart';
 
 import 'components/carousel_slider.dart';
 import 'components/food_category.dart';
-import 'components/popular_food.dart';
+import 'components/item_food.dart';
+import 'components/item_load_more.dart';
 import 'cubits/home_cubit.dart';
 
 class HomeView extends StatelessWidget {
@@ -26,23 +27,36 @@ class HomeView extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) => Scaffold(
           drawer: HomeDrawer(),
-          appBar: homeAppBar(context: context,iconColor: defaultColor),
+          appBar: homeAppBar(context: context, iconColor: defaultColor),
           body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                foodCategory(),
-                heightSizedBox(10),
-                carouselSlider(),
-                heightSizedBox(10),
-                popularFood(),
-                heightSizedBox(10),
+                FoodCategories(),
+                SizedBox(
+                  height: 10,
+                ),
+                ItemSliderImages(),
+                SizedBox(
+                  height: 10,
+                ),
+                ItemLoadMore(
+                  title: LocaleKeys.popular_food.tr(),
+                ),
+                ItemFood(),
+                SizedBox(
+                  height: 10,
+                ),
+                ItemLoadMore(
+                  title: LocaleKeys.popular_brands.tr(),
+                  fontSize: 15,
+                ),
                 popularBrand(),
                 heightSizedBox(10),
                 specialOffers(),
                 heightSizedBox(10),
-                carouselSlider(),
+                ItemSliderImages(),
                 heightSizedBox(10),
               ],
             ),

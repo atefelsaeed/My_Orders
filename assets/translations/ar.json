@@ -36,5 +36,20 @@
   "get_help": " المساعدة",
   "about_us": "معلومات عننا",
   "contact_us": "تواصل معنا",
-  "voucher": "الخصومات"
+  "voucher": "الخصومات",
+  "search_text": "ما الذي تبحث عنه؟",
+  "all": "الكل",
+  "food": "مأكولات أساسية",
+  "groceries": "الخضراوات",
+  "sweet": "الحلويات",
+  "drinks": "المشروبات",
+  "popular_food": "المأكولات الشائعة",
+  "view_more": "عرض المزيد",
+  "popular_brands": "العلامات التجارية الشهيرة بالقرب منك",
+  "special_offers": "عروض خاصة",
+  "fast_delivery ": "توصيل سريع",
+  "all_restaurants": "كل المطاعم",
+  "view_all_restaurants": "عرض كل المطاعم",
+  "info": "معلومات",
+  "reviews": "المراجعات"
 }

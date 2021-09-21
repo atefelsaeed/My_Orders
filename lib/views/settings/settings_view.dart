@@ -49,7 +49,9 @@ class SettingsView extends StatelessWidget {
                       icon: Icon(Icons.edit),
                       items: cubit.languages.map((String items) {
                         return DropdownMenuItem(
-                            value: items, child: Text(items));
+                          value: items,
+                          child: Text(items),
+                        );
                       }).toList(),
                       onChanged: (String? newValue) {
                         cubit.chooseLanguage(newValue!);

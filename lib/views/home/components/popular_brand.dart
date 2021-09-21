@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_order_app_v1/const/style.dart';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
 
 List<String> brandList = [
@@ -11,31 +13,6 @@ List<String> brandList = [
 Widget popularBrand() {
   return Column(
     children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-        child: Row(
-          children: [
-            Text(
-              'Popular brands near you',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            Spacer(),
-            FlatButton(
-              height: 40,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  side: BorderSide(
-                    color: defaultColor,
-                  )),
-              child: Text(
-                'View more',
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
-      ),
-      heightSizedBox(10),
       Container(
         height: 150,
         child: ListView.builder(

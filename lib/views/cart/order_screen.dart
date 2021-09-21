@@ -36,7 +36,7 @@ class OrderTotalScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Image.asset(
-                                  'assets/images/koshari.jpg',
+                                  'assets/images/koshary.png',
                                   fit: BoxFit.cover,
                                 ),
                               ),
