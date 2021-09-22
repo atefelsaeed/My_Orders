@@ -10,7 +10,6 @@ Widget foodCategoryItem({
   required function,
 }) {
   return BlocBuilder<HomeCubit, HomeStates>(builder: (context, state) {
-    HomeCubit cubit = HomeCubit.get(context);
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: FlatButton(

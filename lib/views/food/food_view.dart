@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:my_order_app_v1/views/food/components/food_tap.dart';
 import 'package:my_order_app_v1/widgets/home_app_bar.dart';
 
-import 'components/crepe_tab_view.dart';
-import 'components/pizaa_tab_view.dart';
+import 'model/food_model.dart';
 
 class FoodView extends StatelessWidget {
+  FoodModel foodModel = FoodModel();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -23,44 +26,17 @@ class FoodView extends StatelessWidget {
             labelColor: defaultColor,
             indicatorColor: Colors.white,
             indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: defaultColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black38,
-                    blurRadius: 3,
-                      spreadRadius: 2,
-                  ),
-                ]),
+              borderRadius: BorderRadius.circular(10),
+              color: defaultColor,
+            ),
             tabs: [
-              Tab(
-                child: foodTap(
-                  icon: Icons.emoji_food_beverage_rounded,
-                  title: 'Crepe',
-                ),
-              ),
-              Tab(
-                child: foodTap(
-                  icon: Icons.emoji_food_beverage_rounded,
-                  title: 'Pizza',
-                ),
-              ),
-              Tab(
-                child: foodTap(
-                  icon: Icons.emoji_food_beverage_rounded,
-                  title: 'Sweet',
-                ),
-              ),
-              Tab(
-                child: foodTap(
-                  icon: Icons.emoji_food_beverage_rounded,
-                  title: 'Sandwich',
-                ),
-              ),
-              Tab(
-                child: foodTap(
-                  icon: Icons.emoji_food_beverage_rounded,
-                  title: 'Ice Cream',
+              ...List.generate(
+                foodModel.pages.length,
+                (i) => Tab(
+                  child: FoodTap(
+                    icon: foodModel.icons[i],
+                    title: foodModel.titles[i].tr(),
+                  ),
                 ),
               ),
             ],
@@ -72,11 +48,8 @@ class FoodView extends StatelessWidget {
             padding: const EdgeInsets.all(5.0),
             child: TabBarView(
               children: [
-                CrepeTabView(),
-                PizaaTabView(),
-                PizaaTabView(),
-                PizaaTabView(),
-                PizaaTabView(),
+                ...List.generate(
+                    foodModel.pages.length, (i) => foodModel.pages[i]),
               ],
             ),
           ),

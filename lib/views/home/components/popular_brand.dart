@@ -25,11 +25,13 @@ class PopularBrand extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                      child: Image.asset('assets/images/${popularBrandModel.brandList[index]}',
-                        width: MediaQuery.of(context).size.width / 3,
-                        fit: BoxFit.fill,
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                        child: Image.asset('assets/images/${popularBrandModel.brandList[index]}',
+                          width: MediaQuery.of(context).size.width / 3,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                     heightSizedBox(5),

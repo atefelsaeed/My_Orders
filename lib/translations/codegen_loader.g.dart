@@ -65,7 +65,13 @@ class CodegenLoader extends AssetLoader{
   "special_offers": "عروض خاصة",
   "fast_delivery ": "توصيل سريع",
   "all_restaurants": "كل المطاعم",
-  "view_all_restaurants": "عرض كل المطاعم"
+  "view_all_restaurants": "عرض كل المطاعم",
+  "info": "معلومات",
+  "reviews": "المراجعات",
+  "crepe": "كريب",
+  "pizza": "بيتزا",
+  "sandwitch": "ساندويتش",
+  "ice_cream": "ايس كريم"
 };
 static const Map<String,dynamic> en = {
   "login": "Login",
@@ -118,7 +124,13 @@ static const Map<String,dynamic> en = {
   "special_offers": "Special offers",
   "fast_delivery ": "Fast Delivery ",
   "all_restaurants": "All Restaurants",
-  "view_all_restaurants": "View all Restaurants"
+  "view_all_restaurants": "View all Restaurants",
+  "info": "Info",
+  "reviews": "Reviews",
+  "crepe": "Crepe",
+  "pizza": "Pizza",
+  "sandwitch": "Sandwich",
+  "ice_cream": "Ice Cream"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }
