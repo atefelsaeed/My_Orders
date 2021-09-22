@@ -4,13 +4,9 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:my_order_app_v1/views/home/models/item_slider_model.dart';
 
-var images = [
-  'offer.png',
-  'offer.png',
-  'offer.png',
-];
-
+ItemSliderModel itemSliderModel=ItemSliderModel();
 class ItemSliderImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,11 +17,11 @@ class ItemSliderImages extends StatelessWidget {
         slideBuilder: (index) => Padding(
           padding: const EdgeInsets.only(bottom: 20.0),
           child: Image.asset(
-            'assets/images/${images[index]}',
+            'assets/images/${itemSliderModel.images[index]}',
             fit: BoxFit.fill,
           ),
         ),
-        itemCount: images.length,
+        itemCount: itemSliderModel.images.length,
         slideIndicator: CircularSlideIndicator(
           itemSpacing: 15,
           indicatorBackgroundColor: Colors.red.shade200,
