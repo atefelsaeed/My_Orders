@@ -27,37 +27,39 @@ class ItemSpecialOffers extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height / 4.5,
-                decoration: BoxDecoration(
-                  // border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Stack(alignment: Alignment.centerRight, children: [
-                  Image.network(
-                    '$img',
-                    width: MediaQuery.of(context).size.width / 1.8,
-                    fit: BoxFit.fill,
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 5,
+                  decoration: BoxDecoration(
+                    // border: Border.all(color: Colors.black12),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: defaultColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            bottomLeft: Radius.circular(10))),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      child: Text(
-                        '- 10%',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                  child: Stack(alignment: Alignment.centerRight, children: [
+                    Image.network(
+                      '$img',
+                      width: MediaQuery.of(context).size.width / 1.8,
+                      fit: BoxFit.fill,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: defaultColor,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10))),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        child: Text(
+                          '- 10%',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                  ),
-                ]),
+                  ]),
+                ),
               ),
               SizedBox(
                 height: 5,

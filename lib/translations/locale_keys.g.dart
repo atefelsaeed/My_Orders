@@ -52,5 +52,11 @@ abstract class  LocaleKeys {
   static const fast_delivery  = 'fast_delivery ';
   static const all_restaurants = 'all_restaurants';
   static const view_all_restaurants = 'view_all_restaurants';
+  static const info = 'info';
+  static const reviews = 'reviews';
+  static const crepe = 'crepe';
+  static const pizza = 'pizza';
+  static const sandwitch = 'sandwitch';
+  static const ice_cream = 'ice_cream';
 
 }

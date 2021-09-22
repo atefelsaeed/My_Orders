@@ -34,18 +34,18 @@ class HomeView extends StatelessWidget {
               children: [
                 FoodCategories(),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 ItemSliderImages(),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 ItemLoadMore(
                   title: LocaleKeys.popular_food.tr(),
                 ),
                 ItemFood(),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 ItemLoadMore(
                   title: LocaleKeys.popular_brands.tr(),
@@ -53,7 +53,7 @@ class HomeView extends StatelessWidget {
                 ),
                 PopularBrand(),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -63,15 +63,15 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 SpecialOffers(),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 ItemSliderImages(),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
               ],
             ),
