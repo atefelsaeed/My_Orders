@@ -7,7 +7,7 @@ class ItemLoadMore extends StatelessWidget {
   final title;
   final double fontSize;
 
-  ItemLoadMore({this.title, this.fontSize=20});
+  ItemLoadMore({this.title, this.fontSize = 20});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,19 @@ class ItemLoadMore extends StatelessWidget {
             borderRadius: BorderRadius.circular(15)),
         child: TextButton(
           onPressed: () {},
-          child: Text(LocaleKeys.view_more.tr(),style: TextStyle(color: Colors.black),),
+          child: Text(
+            LocaleKeys.view_more.tr(),
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       ),
-      leading: Text(title,style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize)),
+      leading: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: fontSize,
+        ),
+      ),
     );
   }
 }
