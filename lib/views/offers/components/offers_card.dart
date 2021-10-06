@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/views/meal_order/meal_order_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
@@ -16,7 +19,7 @@ class OffersCard extends StatelessWidget {
           border: Border.all(color: defaultColor, width: 1),
         ),
         child: InkWell(
-          onTap: (){
+          onTap: () {
             navigateTo(context, MealOrderView());
           },
           child: Row(
@@ -35,18 +38,21 @@ class OffersCard extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: defaultColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            bottomLeft: Radius.circular(10))),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text(
-                        '- 10%',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * .04,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: defaultColor,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10))),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          '- 10%',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
@@ -60,14 +66,20 @@ class OffersCard extends StatelessWidget {
                   children: [
                     Text(
                       'Super Koshary',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
-                    heightSizedBox(5),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Text(
                       'Price : 15 EGP',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                     ),
-                    heightSizedBox(5),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Row(
                       children: [
                         Icon(
@@ -94,15 +106,21 @@ class OffersCard extends StatelessWidget {
                 width: 100,
                 height: 30,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10,
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                   color: defaultColor,
                 ),
                 child: MaterialButton(
                   onPressed: () {},
                   child: Text(
-                    'More details',
-                    style: TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.bold),
+                    LocaleKeys.more_details.tr(),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                    // textWidthBasis: TextWidthBasis.parent,
+                    // maxLines: 1,
                   ),
                 ),
               ),

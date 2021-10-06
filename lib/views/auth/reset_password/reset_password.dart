@@ -24,77 +24,79 @@ class ResetPassword extends StatelessWidget {
         LocaleKeys.reset_password.tr(),
       ),
       body: BlocBuilder<LoginCubit, LoginStates>(builder: (context, state) {
-        return Container(
-          color: Colors.white,
-          child: Padding(
+        return SingleChildScrollView(
+          child: Container(
             padding: const EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                heightSizedBox(20),
-                defaultFormField(
-                  controller: newPasswordController,
-                  type: TextInputType.visiblePassword,
-                  isPassword: LoginCubit.get(context).isPassword,
-                  // suffix: LoginCubit.get(context).suffix,
-                  onSubmit: (value) {
-                    if (resetPassFormKey.currentState!.validate()) {
-                      // LoginCubit.get(context).userLogin(
-                      //   email: emailController.text,
-                      //   password: passwordController.text,
-                      // );
-                    }
-                  },
-                  suffixPressed: () {
-                    LoginCubit.get(context).changePasswordVisibility();
-                  },
-                  validate: (String value) {
-                    if (value.isEmpty) {
-                      return 'password is too short';
-                    }
-                  },
-                  label: LocaleKeys.new_password.tr(),
-                  prefix: Icons.lock_sharp,
-                ),
-                heightSizedBox(10),
-                defaultFormField(
-                  controller: confirmNewPasswordController,
-                  type: TextInputType.visiblePassword,
-                  isPassword: LoginCubit.get(context).isPassword,
-                  suffix: LoginCubit.get(context).suffix,
-                  onSubmit: (value) {
-                    if (resetPassFormKey.currentState!.validate()) {
-                      // LoginCubit.get(context).userLogin(
-                      //   email: emailController.text,
-                      //   password: passwordController.text,
-                      // );
-                    }
-                  },
-                  suffixPressed: () {
-                    LoginCubit.get(context).changePasswordVisibility();
-                  },
-                  validate: (String value) {
-                    if (value.isEmpty) {
-                      return 'password is too short';
-                    }
-                    if (value != confirmNewPasswordController.text) {
-                      return 'Not Match';
-                    }
-                    return null;
-                  },
-                  label: LocaleKeys.confirm_new_password.tr(),
-                  prefix: Icons.lock_sharp,
-                ),
-                heightSizedBox(30),
-                defaultButton(
-                  radius: 10,
-                  function: () {
-                    navigateTo(context, BlocProvider.value(
-                      value: LoginCubit.get(context),
-                        child: ForgottenPassword()));
-                  },
-                  text: LocaleKeys.confirm.tr(),
-                ),
-              ],
+            child: Form(
+              key: resetPassFormKey,
+              child: Column(
+                children: [
+                  heightSizedBox(20),
+                  defaultFormField(
+                    controller: newPasswordController,
+                    type: TextInputType.visiblePassword,
+                    isPassword: LoginCubit.get(context).isPassword,
+                    onSubmit: (value) {
+                      if (resetPassFormKey.currentState!.validate()) {
+                        // LoginCubit.get(context).userLogin(
+                        //   email: emailController.text,
+                        //   password: passwordController.text,
+                        // );
+                      }
+                    },
+                    suffixPressed: () {
+                      LoginCubit.get(context).changePasswordVisibility();
+                    },
+                    validate: () {
+                      if (newPasswordController.text.length < 7) {
+                        return 'password is less than 7';
+                      }
+                    },
+                    label: LocaleKeys.new_password.tr(),
+                    prefix: Icons.lock_sharp,
+                  ),
+                  heightSizedBox(10),
+                  defaultFormField(
+                    controller: confirmNewPasswordController,
+                    type: TextInputType.visiblePassword,
+                    isPassword: LoginCubit.get(context).isPassword,
+                    suffix: LoginCubit.get(context).suffix,
+                    onSubmit: (value) {
+                      if (resetPassFormKey.currentState!.validate()) {
+                        // LoginCubit.get(context).userLogin(
+                        //   email: emailController.text,
+                        //   password: passwordController.text,
+                        // );
+                      }
+                    },
+                    suffixPressed: () {
+                      LoginCubit.get(context).changePasswordVisibility();
+                    },
+                    validate: () {
+                      if (confirmNewPasswordController.text != newPasswordController.text) {
+                        return 'Not Match';
+                      }
+                      return null;
+                    },
+                    label: LocaleKeys.confirm_new_password.tr(),
+                    prefix: Icons.lock_sharp,
+                  ),
+                  heightSizedBox(30),
+                  defaultButton(
+                    radius: 10,
+                    function: () {
+                      if (resetPassFormKey.currentState!.validate()) {
+                        navigateTo(
+                            context,
+                            BlocProvider.value(
+                                value: LoginCubit.get(context),
+                                child: ForgottenPassword()));
+                      }
+                    },
+                    text: LocaleKeys.confirm.tr(),
+                  ),
+                ],
+              ),
             ),
           ),
         );

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
+import 'package:my_order_app_v1/views/auth/profile/cubit/profile_cubit.dart';
+import 'package:my_order_app_v1/views/auth/profile/state/profile_state.dart';
 
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/default_text_form_field.dart';
-import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer_view.dart';
 
 class Profile extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
@@ -16,80 +20,144 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: HomeDrawer(),
-      appBar: defaultAppBar(
-        LocaleKeys.profile.tr(),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ListView(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocProvider(
+      create: (context) => ProfileCubit(),
+      child: BlocConsumer<ProfileCubit, ProfileStates>(
+        listener: (context, state) {},
+        builder: (context, state) => Scaffold(
+          drawer: HomeDrawer(),
+          appBar: defaultAppBar(
+            LocaleKeys.profile.tr(),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView(
               children: [
-                Center(
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Column(
                         children: [
-                          Text(
-                            'Ahmed',
-                            style: TextStyle(fontSize: 20),
+                          CircleAvatar(
+                            radius: 50,
                           ),
-                          Icon(Icons.edit)
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Ahmed',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Icon(Icons.edit)
+                            ],
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                defaultFormField(
-                  controller: nameController,
-                  type: TextInputType.name,
-                  validate: (val) {},
-                  label: 'Ahmed Mohamed',
-                  prefix: Icons.person,
-                ),
-                // defaultInfoTextFieldItem(
-                //     contorller: nameController,
-                //     labelText: 'Ahmed Mohamed',
-                //     fieldName: 'Full Name'),
-                // defaultInfoTextFieldItem(
-                //     contorller: emailController,
-                //     labelText: 'User @ yahoo.com',
-                //     fieldName: 'Email'),
-                // defaultInfoTextFieldItem(
-                //     contorller: phoneController,
-                //     labelText: '',
-                //     fieldName: 'Phone Number'),
-                // defaultInfoTextFieldItem(
-                //     contorller: nameController,
-                //     labelText: '15. Nour Street',
-                //     fieldName: 'Address',
-                //     suffixIcon: Icons.location_on),
-                // defaultInfoTextFieldItem(
-                //     contorller: nameController,
-                //     labelText: '122222233',
-                //     fieldName: 'Password',
-                //     isPassword: true,
-                //     suffixIcon: Icons.edit),
-                SizedBox(
-                  height: 40,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: defaultButton(
-                    text: 'Edit',
-                    function: () {},
-                  ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    //============name==============
+                    Text(
+                      LocaleKeys.full_name.tr(),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    defaultFormField(
+                      controller: nameController,
+                      type: TextInputType.name,
+                      validate: () {},
+                      hintText: 'Ahmed Mohamed',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //=============email============
+                    Text(LocaleKeys.email.tr(),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    defaultFormField(
+                      controller: emailController,
+                      type: TextInputType.emailAddress,
+                      validate: () {},
+                      label: 'atef@test.com',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(LocaleKeys.phone_number.tr(),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    defaultFormField(
+                      controller: phoneController,
+                      type: TextInputType.phone,
+                      validate: () {},
+                      hintText: '01023642940',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(LocaleKeys.address.tr(),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    defaultFormField(
+                      controller: addressController,
+                      type: TextInputType.text,
+                      validate: () {},
+                      hintText: 'Al-Nozha st ,Mansoura',
+                      prefix: Icons.location_on,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(LocaleKeys.password.tr(),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+
+                    TextFormField(
+                        obscureText: true,
+                        controller: nameController,
+                        keyboardType: TextInputType.name,
+                        validator: (val) {},
+                        decoration: InputDecoration(
+                          hintText: 'atefElsaeed',
+                          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                          suffixIcon: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              LocaleKeys.change_password.tr(),
+                              style: TextStyle(color: defaultColor),
+                            ),
+                          ),
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: defaultColor,
+                              width: 1,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: defaultColor, width: 1),
+                          ),
+                        )),
+
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: defaultButton(
+                        text: LocaleKeys.edit.tr(),
+                        function: () {},
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

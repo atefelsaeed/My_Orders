@@ -12,7 +12,9 @@ import 'package:my_order_app_v1/widgets/navigate_to.dart';
 import 'package:my_order_app_v1/widgets/sized_box.dart';
 
 class ForgottenPassword extends StatelessWidget {
-  final TextEditingController forgottenPassEmailController = TextEditingController();
+  final TextEditingController forgottenPassEmailController =
+      TextEditingController();
+  var forgottenPassFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,30 +23,42 @@ class ForgottenPassword extends StatelessWidget {
           LocaleKeys.forgotten_password.tr(),
         ),
         body: BlocBuilder<LoginCubit, LoginStates>(builder: (context, state) {
-          return Container(
-            color: Colors.white,
-            padding: const EdgeInsets.all(10.0),
-            child:Column(
-              //===========email==================================
-             children: [
-               heightSizedBox(20),
-               defaultFormField(
-                 controller: forgottenPassEmailController,
-                 type: TextInputType.emailAddress,
-                 validate: (value) {},
-                 label: LocaleKeys.email.tr(),
-                 prefix: Icons.email,
-               ),
-               heightSizedBox(20),
-               defaultButton(
-                 radius: 10,
-                 function: () {
-                   navigateTo(context, HomeView());
-                 },
-                 text: LocaleKeys.reset_your_password.tr(),
-               ),
-             ],
-            ) ,
+          return SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              child: Form(
+                key: forgottenPassFormKey,
+                child: Column(
+                  //===========email==================================
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    defaultFormField(
+                      controller: forgottenPassEmailController,
+                      type: TextInputType.emailAddress,
+                      validate: () {
+                        if (forgottenPassEmailController.text.length < 7) {
+                          return 'email is less than 7';
+                        }
+                      },
+                      label: LocaleKeys.email.tr(),
+                      prefix: Icons.email,
+                    ),
+                    heightSizedBox(20),
+                    defaultButton(
+                      radius: 10,
+                      function: () {
+                        if (forgottenPassFormKey.currentState!.validate()) {
+                          navigateTo(context, HomeView());
+                        }
+                      },
+                      text: LocaleKeys.reset_your_password.tr(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           );
         }));
   }

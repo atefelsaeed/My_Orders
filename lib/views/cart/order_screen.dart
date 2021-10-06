@@ -1,16 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/views/check_out/checkout_screen.dart';
 import 'package:my_order_app_v1/views/restaurant/restaurant_view.dart';
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
 import 'package:my_order_app_v1/widgets/default_button.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 
 class OrderTotalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: defaultAppBar('Orders'),
+      appBar: defaultAppBar(
+        LocaleKeys.orders.tr(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -254,7 +259,7 @@ class OrderTotalScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(),
+              SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Row(
@@ -263,9 +268,9 @@ class OrderTotalScreen extends StatelessWidget {
                       function: () {
                         navigateTo(context, CheckOutScreen());
                       },
-                      text: 'Check out',
+                      text:  LocaleKeys.check_out.tr(),
                       icon: (Icons.arrow_forward_ios_rounded),
-                      width: 160,
+                      width:  MediaQuery.of(context).size.width / 2.5,
                       isUpperCase: false,
                       radius: 15,
                     ),
@@ -274,8 +279,8 @@ class OrderTotalScreen extends StatelessWidget {
                       function: () {
                         navigateTo(context, RestaurantView());
                       },
-                      text: 'Add item',
-                      width: 130,
+                      text: LocaleKeys.add_item.tr(),
+                      width:  MediaQuery.of(context).size.width / 2.5,
                       isUpperCase: false,
                       radius: 15,
                     ),

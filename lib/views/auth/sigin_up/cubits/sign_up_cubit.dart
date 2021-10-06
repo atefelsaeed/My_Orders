@@ -14,12 +14,13 @@ class SignUpCubit extends Cubit<SignUpStates> {
   void changePasswordVisibility() {
     isPassword = !isPassword;
     suffix =
-    isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
+        isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
 
     emit(SignUpChangePasswordVisibilityState());
   }
-  void changeCheckbox(bool value){
-    isChecked=value;
+
+  void changeCheckbox(bool value) {
+    isChecked = value;
     emit(SignUpChangeCheckboxPasswordVisibilityState());
   }
 }

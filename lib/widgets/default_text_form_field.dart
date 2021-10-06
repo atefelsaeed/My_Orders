@@ -8,9 +8,10 @@ Widget defaultFormField({
   Function? onChange,
   Function? onTap,
   bool isPassword = false,
-  required Function validate,
-  required String label,
-   IconData? prefix,
+  String? Function()? validate,
+  String? label,
+  String? hintText,
+  IconData? prefix,
   IconData? suffix,
   Function? suffixPressed,
   bool isClickable = true,
@@ -23,10 +24,19 @@ Widget defaultFormField({
         onFieldSubmitted: (s) {
           onSubmit!(s);
         },
-        validator: (s) {
-          validate(s);
+        validator: (String?value)
+        {
+           // return value!.isEmpty?"must not null":validate??validate;
+          if(value!.isEmpty)
+            {
+              return "must not empty";
+            }
+           if(validate!=null){
+             return validate();
+           }
         },
         decoration: InputDecoration(
+          hintText: hintText,
           contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
           labelText: label,
           prefixIcon: Icon(prefix),

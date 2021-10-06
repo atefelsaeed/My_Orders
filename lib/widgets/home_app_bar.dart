@@ -8,6 +8,7 @@ import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/views/filtter/filtter_view.dart';
 import 'package:my_order_app_v1/views/map_screen/map_screen.dart';
 import 'package:my_order_app_v1/views/search/search_view.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer_view.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 
 homeAppBar({PreferredSizeWidget? tapBar, Color? iconColor,context}) {
@@ -15,6 +16,7 @@ homeAppBar({PreferredSizeWidget? tapBar, Color? iconColor,context}) {
     iconTheme: IconThemeData(color: iconColor),
     backgroundColor: Colors.white,
     elevation: 0,
+    // leading: IconButton(icon: Icon(Icons.sort,), onPressed: () { navigateTo(context, HomeDrawer()); },),
     actions: [
       Container(
         margin: EdgeInsets.symmetric(vertical: 10),

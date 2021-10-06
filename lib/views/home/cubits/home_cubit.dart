@@ -13,37 +13,16 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeCategorySelectedItemState());
   }
 
-  int isSelected = 0;
 
-  void itemSelection(int value) {
-    isSelected = value;
-    emit(HomeDrawerSelectedItemState());
-  }
+  Future<void> getFoodCategories() async {}
+  Future<void> getItemSliderImages() async {}
+  Future<void> getItemFood() async {}
+  Future<void> getPopularBrand() async {}
+  Future<void> getSpecialOffers() async {}
 
-
-  bool notificationSwitchButton = false;
-
-  void onSwitchNotificationButton(bool val) {
-    notificationSwitchButton = val;
-    emit(HomeOnSwitchNotificationButtonState());
-  }
-
-  var languages = ['English', 'العربية'];
-  String dropdownValue = 'English';
-
-  String get getCurrentLanguage => dropdownValue;
-
-  void chooseLanguage(String val) {
-    dropdownValue = val;
-
-    emit(HomeChooseLanguageState());
-  }
-
-  var country = ['Egypt', 'USA'];
-  String countryDropdownValue = 'Egypt';
-
-  void chooseCountry(String? val) {
-    countryDropdownValue = val!;
-    emit(HomeChooseLanguageState());
-  }
+  // @override
+  // Future<void> close() {
+  //   // TODO: implement close
+  //   return super.close();
+  // }
 }
