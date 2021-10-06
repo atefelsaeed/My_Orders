@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_order_app_v1/views/meal_order/cubits/meal_order_cubit.dart';
-import 'package:my_order_app_v1/widgets/sized_box.dart';
 
 import 'components/add_notes.dart';
 import 'components/add_to_cart_button.dart';
@@ -33,17 +32,27 @@ class MealOrderView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    mealImage(),
-                    heightSizedBox(20),
-                    mealCount(),
-                    heightSizedBox(20),
-                    chooseSize(context),
-                    heightSizedBox(20),
-                    extrasOptions(context),
-                    heightSizedBox(20),
-                    addNotes(),
-                    heightSizedBox(35),
-                    addToCartButton(),
+                    MealImage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    MealCount(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ChooseSize(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ExtrasOptions(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    AddNotes(),
+                    SizedBox(
+                      height: 35,
+                    ),
+                    AddToCartButton(),
                   ],
                 ),
               ),

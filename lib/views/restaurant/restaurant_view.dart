@@ -1,236 +1,113 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_order_app_v1/const/style.dart';
-import 'package:my_order_app_v1/views/information/information_view.dart';
-import 'package:my_order_app_v1/views/offers/offers_screen.dart';
-import 'package:my_order_app_v1/views/offers/offers_view.dart';
-import 'package:my_order_app_v1/views/reviews/reviews_view.dart';
-import 'package:my_order_app_v1/widgets/navigate_to.dart';
-import 'package:my_order_app_v1/widgets/sized_box.dart';
+import 'package:my_order_app_v1/views/restaurant/cubits/restaurant_cubit.dart';
+import 'package:my_order_app_v1/views/restaurant/models/model_restaurant.dart';
+import 'package:my_order_app_v1/views/restaurant/states/restaurant_states.dart';
 
-import 'components/restaurant_filter.dart';
+import 'components/header_restaurant.dart';
 
 class RestaurantView extends StatelessWidget {
+  ModelRestaurant modelRestaurant = ModelRestaurant();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Image.asset(
-                    'assets/images/popular.png',
-                    height: 180,
-                    width: double.infinity,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                heightSizedBox(10),
-                Container(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+    return BlocProvider(
+      create: (context) => RestaurantCubit(),
+      child: BlocConsumer<RestaurantCubit, RestaurantStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                iconTheme: IconThemeData(color: Colors.black),
+              ),
+              body: Container(
+                color: Colors.white,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Column(
+                      children: [
+                        HeaderRestaurant(),
+                        DefaultTabController(
+                          length: 4,
+                          child: Column(
                             children: [
-                              Text(
-                                'Koshary Gedoo',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              widthSizedBox(5),
-                              Text(
-                                'Online',
-                                style: TextStyle(
-                                    color: defaultColor, fontSize: 12),
-                              ),
-                            ],
-                          ),
-                          heightSizedBox(10),
-                          Text(
-                            'Delivery :5 EGP | 20-30 mint | 1 km',
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          RatingBar.builder(
-                            itemSize: 10,
-                            initialRating: 5,
-                            minRating: 1,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                            itemBuilder: (context, _) => Icon(
-                              Icons.star,
-                              color: defaultColor,
-                            ),
-                            onRatingUpdate: (rating) {
-                              print(rating);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 2.0,
+                                      offset: Offset(
+                                        -2.0, // horizontal, move right 10
+                                        4.0, // vertical, move down 10
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                onPressed: () {
-                                  navigateTo(
-                                    context,
-                                    InformationView(),
-                                  );
-                                },
-                                child: Text(
-                                  'Info',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: defaultColor,
-                                      fontSize: 12),
-                                ),
+                                child: TabBar(
+                                    labelPadding: EdgeInsets.zero,
+                                    indicatorWeight: 0,
+                                    unselectedLabelColor: Colors.black54,
+                                    labelColor: defaultColor,
+                                    indicator: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(5),
+                                          topRight: Radius.circular(5)),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black26,
+                                          blurRadius: 3.0,
+                                          offset: Offset(
+                                            -1, // horizontal, move right 10
+                                            -1, // vertical, move down 10
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    tabs: [
+                                      ...List.generate(
+                                        modelRestaurant.tabNames.length,
+                                        (i) => Tab(
+                                          // text:modelRestaurant.tabNames[i] ,
+                                          child: Text(
+                                            modelRestaurant.tabNames[i],
+                                            maxLines: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
                               ),
-                              Text(
-                                '|',
-                                style: TextStyle(
-                                    color: Colors.black26, fontSize: 12),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  navigateTo(context, ReviewsView());
-                                },
-                                child: Text(
-                                  'Reviews',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: defaultColor,
-                                      fontSize: 12),
+                              Container(
+                                height: MediaQuery.of(context).size.height / 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: TabBarView(
+                                    children: [
+                                      ...List.generate(
+                                        modelRestaurant.tabNames.length,
+                                        (i) => modelRestaurant.pages[i],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.local_offer_rounded,
-                      color: defaultColor,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        navigateTo(
-                          context,
-                          OffersScreen(),
-                        );
-                      },
-                      child: Text(
-                        'offer of the restaurant',
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: defaultColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    ),
-                  ],
-                ),
-                DefaultTabController(
-                  length: 4,
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 2.0,
-                              // has the effect of softening the shadow
-                              // spreadRadius: 1.0, // has the effect of extending the shadow
-                              offset: Offset(
-                                -2.0, // horizontal, move right 10
-                                4.0, // vertical, move down 10
-                              ),
-                            )
-                          ],
-                        ),
-                        child: TabBar(
-                            unselectedLabelColor: Colors.black54,
-                            labelColor: defaultColor,
-                            // isScrollable: true,
-                            indicatorColor: Colors.white,
-                            indicator: BoxDecoration(),
-                            tabs: [
-                              Tab(
-                                child: Text(
-                                  'koshary',
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Tab(
-                                child: Text(
-                                  'Sandwitch',
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Tab(
-                                child: Text(
-                                  'Chicken',
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Tab(
-                                child: Text(
-                                  'All',
-                                  maxLines: 1,
-                                ),
-                              ),
-                            ]),
-                      ),
-                      Container(
-                        height: 300,
-                        // color: Colors.orangeAccent,
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: TabBarView(
-                            children: [
-                              restaurantFilter(),
-                              restaurantFilter(),
-                              restaurantFilter(),
-                              restaurantFilter(),
                             ],
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
+              ),
+            );
+          }),
     );
   }
 }

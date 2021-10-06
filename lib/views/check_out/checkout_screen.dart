@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'check_out_payment/checkout_payment_screen.dart';
 
@@ -14,7 +16,7 @@ class CheckOutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: defaultAppBar('Check out'),
+      appBar: defaultAppBar(LocaleKeys.check_out.tr(),),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -23,7 +25,7 @@ class CheckOutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: Text(
-                'Full Name',
+                LocaleKeys.full_name.tr(),
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 21),
               ),
             ),
@@ -46,7 +48,7 @@ class CheckOutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: Text(
-                'Phone Number',
+                  LocaleKeys.phone_number.tr(),
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 21),
               ),
             ),
@@ -70,7 +72,7 @@ class CheckOutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: Text(
-                'Address',
+                LocaleKeys.address.tr(),
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 21),
               ),
             ),
@@ -98,7 +100,7 @@ class CheckOutScreen extends StatelessWidget {
               function: () {
                 navigateTo(context, CheckOutPaymentScreen());
               },
-              text: 'Next',
+              text: LocaleKeys.next.tr(),
               icon: Icons.arrow_forward_ios_rounded,
               radius: 15,
               isUpperCase: false,

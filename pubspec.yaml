@@ -38,6 +38,9 @@ dependencies:
   flutter_carousel_slider: ^1.0.8
   flutter_rating_bar: ^4.0.0
   font_awesome_flutter: ^9.1.0
+  webview_flutter:
+  dio:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +74,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: AGCRegular
+      fonts:
+        - asset: assets/fonts/AGCRegular.ttf
+          style: italic
+          weight: 200
+
   # fonts:
   #   - family: Schyler
   #     fonts:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
-import 'package:my_order_app_v1/views/food/food_view.dart';
+import 'package:my_order_app_v1/views/food/view.dart';
 
 import '../view.dart';
 

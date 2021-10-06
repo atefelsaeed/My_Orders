@@ -21,6 +21,8 @@ class MealOrderCubit extends Cubit<MealOrderStates> {
     chooseSizeItemSelection = value;
     emit(MealOrderChooseSizeSelectionState());
   }
+
+
   int extraOptionItemSelection = 0;
 
   void extraOptionSelection(int value) {

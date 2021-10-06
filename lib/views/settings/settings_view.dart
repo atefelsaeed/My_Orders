@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_order_app_v1/const/style.dart';
 import 'package:my_order_app_v1/views/home/cubits/home_cubit.dart';
 import 'package:my_order_app_v1/views/home/states/home_states.dart';
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
+import 'package:my_order_app_v1/widgets/drawer/cubit/cubitDrawer.dart';
+import 'package:my_order_app_v1/widgets/drawer/states/stateDrawer.dart';
 
 class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeStates>(builder: (context, state) {
-      HomeCubit cubit = HomeCubit.get(context);
+    return BlocBuilder<DrawerCubit, DrawerStates>(builder: (context, state) {
+      DrawerCubit cubit = DrawerCubit.get(context);
       return Scaffold(
         appBar: defaultAppBar(
           LocaleKeys.settings.tr(),
@@ -45,7 +48,9 @@ class SettingsView extends StatelessWidget {
                     Text(LocaleKeys.language.tr()),
                     Spacer(),
                     DropdownButton(
-                      value: cubit.dropdownValue,
+                      value: context.locale == Locale('ar')
+                          ? "العربية"
+                          : cubit.dropdownValue,
                       icon: Icon(Icons.edit),
                       items: cubit.languages.map((String items) {
                         return DropdownMenuItem(

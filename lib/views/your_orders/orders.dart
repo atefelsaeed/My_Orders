@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:my_order_app_v1/widgets/default_app_bar.dart';
-import 'package:my_order_app_v1/widgets/drawer/drawer.dart';
+import 'package:my_order_app_v1/widgets/drawer/drawer_view.dart';
 
 import 'old_orders_screen.dart';
 import 'recents_orders_screen.dart';
@@ -19,7 +22,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: HomeDrawer(),
-      appBar: defaultAppBar('Orders'),
+    appBar: defaultAppBar(LocaleKeys.orders.tr(),),
       body: Container(
         child: Column(
           children: [
@@ -35,11 +38,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     child: Container(
                       child: Center(
                         child: Text(
-                          'Old Orders',
+                          LocaleKeys.old_orders.tr(),
                           style: TextStyle(color: Colors.white, fontSize: 19),
                         ),
                       ),
-                      height: 60,
+                      height: 50,
                       margin: EdgeInsets.only(right: 170),
                       decoration: BoxDecoration(
                           color: button1IsSelected
@@ -47,7 +50,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                               : Color(0xffE17D72),
                           borderRadius: BorderRadius.circular(25)),
                       width: button1IsSelected
-                          ? MediaQuery.of(context).size.width / 1.9
+                          ? MediaQuery.of(context).size.width / 1.5
                           : MediaQuery.of(context).size.width / 2,
                     ),
                   ),
@@ -58,11 +61,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     },
                     child: Container(
                       child: Center(
-                          child: Text(
-                        'Recents Orders',
-                        style: TextStyle(color: Colors.white, fontSize: 19),
-                      )),
-                      height: 60,
+                        child: Text(
+                          LocaleKeys.recent_orders.tr(),
+                          style: TextStyle(color: Colors.white, fontSize: 19),
+                          maxLines: 1,
+
+                        ),
+                      ),
+                      height: 50,
                       margin: EdgeInsets.only(left: 170),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
@@ -70,7 +76,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             button1IsSelected ? secondaryColor : defaultColor,
                       ),
                       width: !button1IsSelected
-                          ? MediaQuery.of(context).size.width / 1.9
+                          ? MediaQuery.of(context).size.width / 1.5
                           : MediaQuery.of(context).size.width / 2,
                     ),
                   ),

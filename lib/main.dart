@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:my_order_app_v1/views/home/view.dart';
 
 import 'translations/codegen_loader.g.dart';
 import 'views/splash/splash_view.dart';
@@ -21,14 +22,15 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'AGCRegular',
         secondaryHeaderColor: defaultColor,
+        scaffoldBackgroundColor: Colors.white,
         primaryColor: defaultColor,
       ),
       localizationsDelegates: context.localizationDelegates,

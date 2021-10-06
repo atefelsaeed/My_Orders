@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/translations/locale_keys.g.dart';
-import 'package:my_order_app_v1/views/food/components/crepe_tab_view.dart';
-import 'package:my_order_app_v1/views/food/components/pizaa_tab_view.dart';
+import 'package:my_order_app_v1/views/food/pages/crepe_tab_view.dart';
+import 'package:my_order_app_v1/views/food/pages/pizaa_tab_view.dart';
 
 class FoodModel{
   var pages = [
@@ -24,7 +24,7 @@ class FoodModel{
     LocaleKeys.crepe,
     LocaleKeys.pizza,
     LocaleKeys.sweet,
-    LocaleKeys.sandwitch,
+    LocaleKeys.sandwich,
     LocaleKeys.ice_cream,
   ];
 }
