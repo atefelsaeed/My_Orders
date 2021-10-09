@@ -15,7 +15,8 @@ class ItemCategory extends StatelessWidget {
     return Container(
       margin: const EdgeInsetsDirectional.only(start: 10),
       decoration: BoxDecoration(
-          color: selectedIndex == index ? Colors.green : defaultColor,
+          // color: selectedIndex == index ? Colors.green : defaultColor,
+          color: defaultColor,
           borderRadius: BorderRadius.circular(15)),
       child: TextButton.icon(
         onPressed: press,

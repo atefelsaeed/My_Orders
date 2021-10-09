@@ -23,8 +23,8 @@ class ItemDrawer extends StatelessWidget {
     return BlocBuilder<DrawerCubit, DrawerStates>(builder: (context, state) {
       DrawerCubit cubit = DrawerCubit.get(context);
       return Container(
-        width: MediaQuery.of(context).size.width / 2,
         height: MediaQuery.of(context).size.width / 6,
+        margin: const EdgeInsetsDirectional.only(end: 80),
         decoration: cubit.isSelected == selected
             ? BoxDecoration(
                 color: Colors.black,

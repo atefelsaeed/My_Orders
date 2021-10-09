@@ -22,7 +22,9 @@ class FoodView extends StatelessWidget {
         create: (context) => FoodCubit(),
         child: BlocConsumer<FoodCubit, FoodStates>(
           listener: (context, state) {},
-          builder: (context, state) => Scaffold(
+          builder: (context, state) {
+            FoodCubit cubit = FoodCubit.get(context);
+            return Scaffold(
             appBar: homeAppBar(
               context: context,
               iconColor: Colors.black,
@@ -41,7 +43,7 @@ class FoodView extends StatelessWidget {
                   (i) => Tab(
                     child: FoodTap(
                       onTap: (){
-                        FoodCubit.get(context).categoryItemSelection(i);
+                        cubit.categoryItemSelection(i);
                       },
                       icon: foodModel.icons[i],
                       title: foodModel.titles[i].tr(),
@@ -53,15 +55,9 @@ class FoodView extends StatelessWidget {
                 ),
               ),
             ),
-            body: TabBarView(
-                children:
-                    // ListView.builder(
-                    //   itemBuilder: (context, i) => foodModel.pages[i],
-                    //   itemCount: foodModel.pages.length,
-                    // ),
-                    List.generate(
-                        foodModel.pages.length, (i) => foodModel.pages[i])),
-          ),
+            body: foodModel.pages[cubit.categorySelected],
+          );
+          },
         ),
       ),
     );

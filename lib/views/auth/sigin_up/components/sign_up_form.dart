@@ -5,17 +5,14 @@ import 'package:my_order_app_v1/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:my_order_app_v1/views/auth/sigin_up/cubits/sign_up_cubit.dart';
 import 'package:my_order_app_v1/views/auth/sigin_up/states/sign_up_states.dart';
+import 'package:my_order_app_v1/views/home/view.dart';
 import 'package:my_order_app_v1/widgets/default_button.dart';
 import 'package:my_order_app_v1/widgets/default_text_form_field.dart';
+import 'package:my_order_app_v1/widgets/navigate_to.dart';
 
 import 'pin_code_alert_dialog.dart';
 
 class SignUpForm extends StatelessWidget {
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   var signUpFormKey = GlobalKey<FormState>();
 
   @override
@@ -23,6 +20,7 @@ class SignUpForm extends StatelessWidget {
     return BlocConsumer<SignUpCubit, SignUpStates>(
         listener: (context, state) {},
         builder: (context, state) {
+          SignUpCubit cubit = SignUpCubit.get(context);
           return Form(
             key: signUpFormKey,
             child: Column(
@@ -36,10 +34,10 @@ class SignUpForm extends StatelessWidget {
                 ),
                 //===========firstName==================================
                 defaultFormField(
-                  controller: firstNameController,
+                  controller: cubit.firstNameController,
                   type: TextInputType.name,
                   validate: () {
-                    if (firstNameController.text.length < 3) {
+                    if (cubit.firstNameController.text.length < 3) {
                       return "name is less than 3";
                     }
                   },
@@ -51,10 +49,10 @@ class SignUpForm extends StatelessWidget {
                 ),
                 //===========lastName==================================
                 defaultFormField(
-                  controller: lastNameController,
+                  controller: cubit.lastNameController,
                   type: TextInputType.name,
                   validate: () {
-                    if (lastNameController.text.length < 3) {
+                    if (cubit.lastNameController.text.length < 3) {
                       return "name is less than 3";
                     }
                   },
@@ -66,7 +64,7 @@ class SignUpForm extends StatelessWidget {
                 ),
                 //===========email==================================
                 defaultFormField(
-                  controller: emailController,
+                  controller: cubit.emailController,
                   type: TextInputType.emailAddress,
                   validate: () {},
                   label: LocaleKeys.email.tr(),
@@ -77,7 +75,7 @@ class SignUpForm extends StatelessWidget {
                 ),
                 //===========phoneNumber==================================
                 defaultFormField(
-                  controller: phoneNumberController,
+                  controller: cubit.phoneNumberController,
                   type: TextInputType.phone,
                   validate: () {},
                   label: LocaleKeys.phone_number.tr(),
@@ -88,7 +86,7 @@ class SignUpForm extends StatelessWidget {
                 ),
                 //===========password==================================
                 defaultFormField(
-                  controller: passwordController,
+                  controller: cubit.passwordController,
                   type: TextInputType.visiblePassword,
                   isPassword: SignUpCubit.get(context).isPassword,
                   suffix: SignUpCubit.get(context).suffix,
@@ -104,7 +102,7 @@ class SignUpForm extends StatelessWidget {
                     SignUpCubit.get(context).changePasswordVisibility();
                   },
                   validate: () {
-                    if (passwordController.text.length < 3) {
+                    if (cubit.passwordController.text.length < 3) {
                       return "password is less than 7";
                     }
                   },
@@ -133,19 +131,32 @@ class SignUpForm extends StatelessWidget {
                 ),
                 //===================signUpButton=========================
                 defaultButton(
-                  function: () {
+                  function: () async {
                     if (signUpFormKey.currentState!.validate()) {
-                      showDialog(
-                        barrierDismissible: false,
+                      await cubit.userSignUp(
+                        firstName: cubit.firstNameController.text,
+                        lastName: cubit.lastNameController.text,
+                        email: cubit.emailController.text,
+                        phone: cubit.phoneNumberController.text,
+                        password: cubit.passwordController.text,
+                        passwordConfirmation: cubit.passwordController.text,
                         context: context,
-                        builder: (ctx) {
-                          return Container(
-                            // height: MediaQuery.of(context).size.height/2,
-                            child: PinCodeAlertDialog(),
-                          );
-                        },
                       );
+                      print('well go');
+                    } else {
+                      print('User signUp Error');
                     }
+
+                    // showDialog(
+                    //   barrierDismissible: false,
+                    //   context: context,
+                    //   builder: (ctx) {
+                    //     return Container(
+                    //       // height: MediaQuery.of(context).size.height/2,
+                    //       child: PinCodeAlertDialog(),
+                    //     );
+                    //   },
+                    // );
                   },
                   text: ('${LocaleKeys.sign_up.tr()}'),
                   isUpperCase: false,

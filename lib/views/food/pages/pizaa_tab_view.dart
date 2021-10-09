@@ -11,6 +11,7 @@ class PizaaTabView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Text("pizza"),
             FastDelivery(),
             AllRestaurant(),
           ],

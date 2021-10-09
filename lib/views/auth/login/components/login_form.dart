@@ -15,14 +15,15 @@ import 'package:my_order_app_v1/widgets/default_text_form_field.dart';
 import 'package:my_order_app_v1/widgets/navigate_to.dart';
 
 class LoginForm extends StatelessWidget {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final formKeyLogin = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginStates>(
-      builder: (context, state) => Form(
+    return BlocBuilder<LoginCubit, LoginStates>(builder: (context, state) {
+      LoginCubit cubit = LoginCubit.get(context);
+      return Form(
         key: formKeyLogin,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,10 +37,9 @@ class LoginForm extends StatelessWidget {
               controller: emailController,
               type: TextInputType.emailAddress,
               validate: () {
-                if(emailController.text.length<7)
-                  {
-                    return "email is less than 7";
-                  }
+                if (emailController.text.length < 7) {
+                  return "email is less than 7";
+                }
               },
               label: LocaleKeys.email.tr(),
               prefix: Icons.email,
@@ -53,21 +53,20 @@ class LoginForm extends StatelessWidget {
               type: TextInputType.visiblePassword,
               isPassword: LoginCubit.get(context).isPassword,
               suffix: LoginCubit.get(context).suffix,
-              onSubmit: (value) {
-                if (formKeyLogin.currentState!.validate()) {
-                  // LoginCubit.get(context).userLogin(
-                  //   email: emailController.text,
-                  //   password: passwordController.text,
-                  // );
-                }
-              },
+              // onSubmit: (value) {
+              //   if (formKeyLogin.currentState!.validate()) {
+              //     LoginCubit.get(context).userLogin(
+              //       email: emailController.text,
+              //       password: passwordController.text,
+              //     );
+              //   }
+              // },
               suffixPressed: () {
                 LoginCubit.get(context).changePasswordVisibility();
               },
               validate: () {
-                if(passwordController.text.length<7)
-                {
-                  return "password is less than 7";
+                if (passwordController.text.length < 6) {
+                  return "password is less than 6";
                 }
               },
               label: LocaleKeys.password.tr(),
@@ -107,13 +106,21 @@ class LoginForm extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             defaultButton(
-              function: () {
+              function: ()async {
+                print('button');
                 if (formKeyLogin.currentState!.validate()) {
-                  print('User login Success');
-                  navigateTo(context, HomeView());
-                }else{
+                 await cubit.userLogin(
+                    email: emailController.text,
+                    password: passwordController.text,
+                   context: context,
+                  );
+                  print('well go');
+
+                } else {
                   print('User login Error');
                 }
               },
@@ -123,7 +130,7 @@ class LoginForm extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
+    });
   }
 }
