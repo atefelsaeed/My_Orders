@@ -18,18 +18,15 @@ class HomeDrawer extends StatelessWidget {
       child: BlocBuilder<DrawerCubit, DrawerStates>(
       builder: (context, state) {
         return Drawer(
-          child: SafeArea(
-            child: SingleChildScrollView(
-              child: Container(
-                decoration: drawerDecoration(),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MyDrawerHeader(),
-                      DrawerBody(),
-                      DrawerFooter(),
-                    ]),
-              ),
+          child: Container(
+            decoration: drawerDecoration(),
+            child: SafeArea(
+              child: ListView(
+                  children: [
+                    MyDrawerHeader(),
+                    DrawerBody(),
+                    DrawerFooter(),
+                  ]),
             ),
           ),
         );

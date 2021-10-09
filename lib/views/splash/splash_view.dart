@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_order_app_v1/const/style.dart';
+import 'package:my_order_app_v1/core/cache_helper.dart';
 import 'package:my_order_app_v1/views/map_screen/map_screen.dart';
 
 class SplashView extends StatefulWidget {
@@ -13,10 +14,17 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 1),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MapSample())));
+    CacheHelper.saveData(
+      key: 'splash',
+      value: true,
+    ).then((value) {
+      if (value) {
+        Timer(
+            Duration(seconds: 1),
+            () => Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => MapSample())));
+      }
+    });
   }
 
   @override
